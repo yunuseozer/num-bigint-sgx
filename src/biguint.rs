@@ -1,5 +1,6 @@
 #[allow(deprecated, unused_imports)]
-use std::ascii::AsciiExt;
+use std::prelude::v1::*;
+//use std::ascii::AsciiExt;
 use std::borrow::Cow;
 use std::cmp;
 use std::cmp::Ordering::{self, Equal, Greater, Less};
