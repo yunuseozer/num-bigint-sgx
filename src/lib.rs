@@ -106,6 +106,12 @@
 // We don't actually support `no_std` yet, and probably won't until `alloc` is stable.  We're just
 // reserving this ability with the "std" feature now, and compilation will fail without.
 #![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(all(feature = "mesalock_sgx", not(target_env = "sgx")), no_std)]
+#![cfg_attr(all(target_env = "sgx", target_vendor = "mesalock"), feature(rustc_private))]
+#[cfg(all(feature = "std",
+          all(feature = "mesalock_sgx", not(target_env = "sgx"))))]
+#[macro_use]
+extern crate sgx_tstd as std;
 
 #[cfg(feature = "rand")]
 extern crate rand;
