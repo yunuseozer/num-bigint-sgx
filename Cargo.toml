@@ -17,6 +17,7 @@ autobenches = false
 features = ["std", "serde", "rand", "prime"]
 
 [dependencies]
+sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
 
 [dependencies.smallvec]
 version = "0.6.7"
@@ -24,31 +25,37 @@ default-features = false
 
 [dependencies.num-integer]
 version = "0.1.39"
-default-features = false
+#default-features = false
+git = "https://github.com/mesalock-linux/num-integer-sgx"
 
 [dependencies.num-traits]
 version = "0.2.4"
-default-features = false
+#default-features = false
+git = "https://github.com/mesalock-linux/num-traits-sgx"
 
 [dependencies.num-iter]
 version = "0.1.37"
-default-features = false
+#default-features = false
+git = "https://github.com/mesalock-linux/num-iter-sgx"
 
 [dependencies.rand]
 optional = true
-version = "0.6"
-default-features = false
+version = "0.7"
+#default-features = false
+git = "https://github.com/mesalock-linux/rand-sgx"
+tag = "v0.6.5_sgx1.0.9"
 
 [dependencies.zeroize]
 version = "0.10.1"
 default-features = false
 optional = true
-features = ["zeroize_derive"]
+features = ["alloc", "zeroize_derive"]
 
 [dependencies.serde]
 optional = true
 version = "1.0"
-default-features = false
+#default-features = false
+git = "https://github.com/mesalock-linux/serde-sgx"
 
 [dependencies.libm]
 version = "0.1.4"
@@ -62,23 +69,25 @@ features = ["spin_no_std"]
 
 [dependencies.byteorder]
 version = "1.2.7"
-default-features = false
+#default-features = false
+git = "https://github.com/mesalock-linux/byteorder-sgx"
 
-[dev-dependencies]
-rand_chacha = "0.1"
-rand_xorshift = "0.1"
-rand_isaac = "0.1"
+#[dev-dependencies]
+#rand_chacha = "0.1"
+#rand_xorshift = "0.1"
+#rand_isaac = "0.1"
 
-[dev-dependencies.serde_test]
-version = "1.0"
+#[dev-dependencies.serde_test]
+#version = "1.0"
 
-[build-dependencies]
-autocfg = "0.1.5"
+#[build-dependencies]
+#autocfg = "0.1.5"
 
 [features]
-default = ["std", "i128", "u64_digit"]
+default = ["std", "i128", "u64_digit", "mesalock_sgx"]
 i128 = ["num-integer/i128", "num-traits/i128"]
-std = ["num-integer/std", "num-traits/std", "smallvec/std", "rand/std", "serde/std"]
+std = ["num-integer/std", "num-traits/std", "rand/std", "mesalock_sgx"]
 u64_digit = []
 prime = ["rand"]
 nightly = ["rand/nightly"]
+mesalock_sgx = ["sgx_tstd"]

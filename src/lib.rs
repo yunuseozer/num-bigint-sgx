@@ -101,6 +101,14 @@
 #![doc(html_root_url = "https://docs.rs/num-bigint/0.2")]
 #![cfg_attr(not(feature = "std"), no_std)]
 
+#![cfg_attr(all(feature = "mesalock_sgx",
+                not(target_env = "sgx")), no_std)]
+#![cfg_attr(all(target_env = "sgx", target_vendor = "mesalock"), feature(rustc_private))]
+
+#[cfg(all(feature = "mesalock_sgx", not(target_env = "sgx")))]
+#[macro_use]
+extern crate sgx_tstd as std;
+
 #[cfg(not(feature = "std"))]
 #[macro_use]
 extern crate alloc;
@@ -108,7 +116,7 @@ extern crate alloc;
 #[cfg(feature = "std")]
 use std as alloc;
 
-#[cfg(feature = "std")]
+#[cfg(all(feature = "std", target_env = "sgx"))]
 extern crate core;
 
 #[cfg(feature = "rand")]
