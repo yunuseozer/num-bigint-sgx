@@ -17,7 +17,7 @@ autobenches = false
 features = ["std", "serde", "rand", "prime"]
 
 [dependencies]
-sgx_tstd = { rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
+sgx_tstd = { rev = "v1.1.1", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
 
 [dependencies.smallvec]
 version = "1.0.0"
@@ -44,7 +44,7 @@ optional = true
 version = "0.7"
 #default-features = false
 git = "https://github.com/mesalock-linux/rand-sgx"
-tag = "v0.6.5_sgx1.1.0"
+tag = "v0.6.5_sgx1.1.1"
 
 [dependencies.zeroize]
 version = "1.1.0"

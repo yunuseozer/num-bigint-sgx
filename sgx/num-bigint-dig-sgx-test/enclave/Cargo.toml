@@ -14,12 +14,12 @@ default = []
 num-bigint-dig = { path = "../../..", features = ["rand", "i128", "u64_digit", "prime", "zeroize", "nightly", "serde"] }
 num-traits = { git = "https://github.com/mesalock-linux/num-traits-sgx" }
 num-integer = { git = "https://github.com/mesalock-linux/num-integer-sgx" }
-rand = { tag = "v0.6.5_sgx1.1.0",  git = "https://github.com/mesalock-linux/rand-sgx", features = ["small_rng"] }
+rand = { tag = "v0.6.5_sgx1.1.1",  git = "https://github.com/mesalock-linux/rand-sgx", features = ["small_rng"] }
 smallvec = { git = "https://github.com/mesalock-linux/rust-smallvec-sgx" }
 #rand_chacha = { tag = "v0.6.5_sgx1.1.0", git = "https://github.com/mesalock-linux/rand-sgx" }
 serde_test = { git = "https://github.com/mesalock-linux/serde-sgx" }
 
 [target.'cfg(not(target_env = "sgx"))'.dependencies]
-sgx_types = { rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
-sgx_tstd = { rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
-sgx_tunittest = {rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_types = { rev = "v1.1.1", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tstd = { rev = "v1.1.1", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_tunittest = {rev = "v1.1.1", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
